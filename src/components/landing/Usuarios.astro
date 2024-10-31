@@ -16,7 +16,7 @@ function renderStars(rating: number): string {
     {
       usuarios.map((usuario) => (
         <div class="bg-slate-800 p-10 rounded-xl">
-          <img src="/logo_usuario.png" alt="Feature usuario" class="w-24 h-auto mb-4 rounded-md" />
+          <img src="/DolaralDia/logo_usuario.png" alt="Feature usuario" class="w-24 h-auto mb-4 rounded-md" />
           <h2 class="text-xl font-bold my-4">{usuario.nombre}</h2>
           <p>{usuario.comentario}</p>
           <p class="mt-4">Calificación: <span class="text-yellow-500">{renderStars(usuario.calificacion)}</span></p>
