@@ -1,0 +1,69 @@
+---
+interface Monitor {
+  change: number;
+  color: string;
+  image: string;
+  last_update: string;
+  percent: number;
+  price: number;
+  price_old: number;
+  symbol: string;
+  title: string;
+}
+
+interface Data {
+  datetime: {
+    date: string;
+    time: string;
+  };
+  monitors: {
+    amazon_gift_card: Monitor;
+    bcv: Monitor;
+    binance: Monitor;
+    cripto_dolar: Monitor;
+    dolar_today: Monitor;
+    enparalelovzla: Monitor;
+    paypal: Monitor;
+    skrill: Monitor;
+    uphold: Monitor;
+  };
+}
+
+const response = await fetch('http://pydolarve.org/api/v1/dollar', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer 2x9Qjpxl5F8CoKK6T395KA',
+  },
+});
+
+const data: Data = await response.json();
+const { datetime, monitors } = data;
+---
+
+<div class="p-10 bg-gray-800 text-white rounded-xl mt-6">
+  <!-- Fecha y Hora de la actualización -->
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold">Valor del dolar en Paginas</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Mostrar cada monitor de tasas de cambio en columnas -->
+    {Object.values(monitors).map((monitor: Monitor) => (
+      <div class="bg-zinc-900 p-6 rounded-xl shadow-md">
+        <h2 class="text-3xl font-bold">{monitor.title}</h2>
+        <img src={monitor.image} alt={`${monitor.title} logo`} class="w-16 my-3" />
+        <p class="text-2xl">Precio: {monitor.price} Bs.</p>
+        <p class="text-lg">
+          Cambio: <span class={`font-bold text-${monitor.color}`}>{monitor.change} {monitor.symbol}</span>
+        </p>
+        <p class="text-sm">Porcentaje: {monitor.percent}%</p>
+        <p class="text-sm">Precio anterior: {monitor.price_old} Bs.</p>
+        <p class="text-sm text-gray-400">Última actualización: {monitor.last_update}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* Estilos adicionales para personalizar la presentación en diferentes dispositivos */
+</style>
