@@ -9,5 +9,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [react(), tailwind()],
   site: 'https://carlosvpinto.github.io',
-  base: '/DolaralDia'
+  base: '/DolaralDia/'
 });
