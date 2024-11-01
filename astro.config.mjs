@@ -11,3 +11,4 @@ export default defineConfig({
   site: 'https://carlosvpinto.github.io',
   base: '/DolaralDia/'
 });
+
