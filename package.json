@@ -9,8 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "gh-pages -d dist",
-    "packageManager": "pnpm@9.9.0"  
-    
+    "packageManager": "pnpm@9.12.3"  
+
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
