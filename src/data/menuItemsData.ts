@@ -17,11 +17,7 @@ const menuItems: MenuItem[] = [
     url: "#bancos",  // Enlace a la sección con id="paginas"
     icon: "",
   },
-  {
-    title: "Usuarios",
-    url: "#usuarios",  // Enlace a la sección con id="usuarios"
-    icon: "",
-  },
+
 ];
 
 export default menuItems;
