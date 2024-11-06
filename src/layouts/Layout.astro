@@ -1,28 +1,30 @@
 ---
-interface Props{
-	title:String;
+import menuItems from "../data/menuItemsData";
+interface Props {
+  title: String;
 }
 
-import '../styles/layout.css'
-
-const {title}= Astro.props
+import MenuContainerView from "../components/MenuContainerView.astro";
+import "../styles/layout.css";
+import MenuItemsView from "../components/MenuItemsView.astro";
+import Header from "../components/landing/Header.astro";
+const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dolar Al Dia - {title}</title>
-	<link rel="icon" href="/logo_dolar_icon.png" type="image/x-icon">
-</head>
-<body>
-	 
-	<main class="mx-auto container text-2xl md:pt-10">
+<!doctype html>
+<html lang="es" class="scroll-smooth"> <!-- Aquí se agrega la clase scroll-smooth -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dolar Al Dia - {title}</title>
+    <link rel="icon" href="/logo_dolar_icon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <MenuContainerView/>
+   
 
-		<slot/>
-
-	</main>
-
-</body>
+    <main class="class= mx-auto container text-2xl md:pt-5">
+      <slot />
+    </main>
+  </body>
 </html>

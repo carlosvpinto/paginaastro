@@ -10,12 +10,15 @@ function renderStars(rating: number): string {
 
 ---
 
-<Layout title="Usuarios">
-  <h1 class="text-center font-bold text-5xl mt-10">Usuarios</h1>
-  <div class="grid md:grid-cols-3 gap-4 p-4">
-    {
-      usuarios.map((usuario) => (
-        <div class="bg-slate-800 p-10 rounded-xl">
+
+
+<section id="usuarios" class="scroll-mt-20">
+    
+  <h2 class="text-center font-bold text-5xl mt-10">Usuarios</h2>
+    <div class="grid md:grid-cols-3 gap-4 p-4">
+      {
+        usuarios.map((usuario) => (
+          <div class="bg-slate-800 p-10 rounded-xl">
           <img src="/logo_usuario.png" alt="Feature usuario" class="w-24 h-auto mb-4 rounded-md" />
           <h2 class="text-xl font-bold my-4">{usuario.nombre}</h2>
           <p>{usuario.comentario}</p>
@@ -24,5 +27,6 @@ function renderStars(rating: number): string {
       ))
     }
   </div>
-</Layout>
+</section>
+
 

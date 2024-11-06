@@ -1,0 +1,13 @@
+---
+import type { MenuItem } from '../types/types'
+
+interface Props extends MenuItem {}
+
+const { title, url, icon } = Astro.props;
+---
+
+<li class="list-none p-0 m-0">
+    <a href={url} class="text-white text-lg block px-10 py-7 flex items-center transition-all duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110">
+        {title}
+    </a>
+</li>
