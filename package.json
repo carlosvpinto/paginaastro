@@ -9,8 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "gh-pages -d dist",
-    "packageManager": "pnpm@9.12.3"  
-
+    "packageManager": "pnpm@9.12.3"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -20,6 +19,7 @@
     "@types/react-dom": "^18.3.1",
     "astro": "^4.16.7",
     "axios": "^1.7.7",
+    "prueba2": "link:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-toastify": "^10.0.6",

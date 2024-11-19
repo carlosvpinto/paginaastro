@@ -29,6 +29,9 @@ importers:
       axios:
         specifier: ^1.7.7
         version: 1.7.7
+      prueba2:
+        specifier: 'link:'
+        version: 'link:'
       react:
         specifier: ^18.3.1
         version: 18.3.1
