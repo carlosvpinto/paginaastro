@@ -9,22 +9,39 @@ import "../styles/layout.css";
 import MenuItemsView from "../components/MenuItemsView.astro";
 import Header from "../components/landing/Header.astro";
 const { title } = Astro.props;
+
+// Declara gtag como global
+declare function gtag(...args: any[]): void;
+
+// Configura Google Analytics al cargar la página
+if (typeof window !== 'undefined') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: any[]) {
+    window.dataLayer.push(args);
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'G-27NVM4S2DW');
+}
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth"> <!-- Aquí se agrega la clase scroll-smooth -->
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dolar Al Dia - {title}</title>
     <link rel="icon" href="/logo_dolar_icon.png" type="image/x-icon" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-27NVM4S2DW"></script>
   </head>
+  
   <body>
     <MenuContainerView/>
    
-
-    <main class="class= mx-auto container text-2xl md:pt-5">
+    <main class="mx-auto container text-2xl md:pt-5">
       <slot />
     </main>
   </body>
 </html>
+

@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from 'react';
-
+// src/pages/index.astro 
+//import firebase from '../firebaseConfig.js'; 
+//firebase.analytics();
 // Componente para mostrar los valores del dólar
 const DolarComponent = () => {
   // Estados para almacenar los datos del BCV y EnParaleloVzla
