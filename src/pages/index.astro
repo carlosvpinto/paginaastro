@@ -10,12 +10,16 @@ import Paginas from "../components/landing/OtrasPaginas.astro";
 import Bancos from "../components/landing/BancosdeVenezuela.astro";
 import MenuItemsView from "../components/MenuItemsView.astro";
 import Header from "../components/landing/Header.astro";
+// Importa el componente React
+import DolarComponent from '../components/landing/DolarComponent';
 ---
 
 <Layout title="Principal">
   
   <Hero />
-  <DolarBcvyParalelo />
+  <!-- Llamada al componente React dentro de la página de Astro -->
+<DolarComponent client:load />
+ <!-- <DolarBcvyParalelo /> -->
   <Paginas />
   <Bancos />
   <Usuarios />
