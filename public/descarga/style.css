@@ -1,0 +1,105 @@
+
+/* --- Configuración Global y Fuentes --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212; /* Un negro un poco más suave que el puro */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    max-width: 600px;
+    width: 100%;
+    opacity: 0; /* Inicialmente invisible para la animación */
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Elementos de Branding --- */
+.app-logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.5rem;
+    border-radius: 22%; /* Coincide con el redondeo de iconos de iOS */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    /* Usamos el azul de acento de tu app */
+    color: #007AFF;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: #b0b0b0; /* Un gris claro para el subtítulo */
+    margin-bottom: 3rem;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* --- Botones de Descarga --- */
+.download-buttons {
+    display: flex;
+    flex-direction: column; /* Apilados en móvil */
+    gap: 1.5rem; /* Espacio entre botones */
+    align-items: center;
+    justify-content: center;
+}
+
+.store-badge {
+    height: 55px; /* Altura unificada para los logos de las tiendas */
+    transition: transform 0.3s ease;
+}
+
+.store-badge:hover {
+    transform: scale(1.05); /* Efecto de crecimiento al pasar el ratón */
+}
+
+.google-badge {
+    height: 82px; /* La insignia de Google Play es más ancha, ajustamos */
+    margin: -13px 0; /* Ajuste vertical para que se vea centrado */
+}
+
+
+/* --- Pie de Página --- */
+footer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+
+/* --- Diseño Responsivo para Pantallas más Grandes (Tablets y Escritorio) --- */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .download-buttons {
+        flex-direction: row; /* Lado a lado en pantallas grandes */
+    }
+}
