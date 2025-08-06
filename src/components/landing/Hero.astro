@@ -4,20 +4,33 @@ import Button from "../butonsuscrib";
 
 <section id="home" class="scroll-mt-20">
 <header
-  class="bg-zinc-900 flex flex-col md:flex-row p-20 gap-3 text-center md:text-left rounded-xl items-center md:items-start"
+  class="bg-zinc-900 flex flex-col md:flex-row p-12 md:p-20 gap-8 text-center md:text-left rounded-xl items-center md:items-start"
 >
-  <img src="/logoredondo.png" alt="Logo Dólar al Día" class="w-60 md:self-end " />
+  <!-- 
+    CAMBIO: Se eliminó la clase "md:self-end" para que el logo se alinee arriba 
+  -->
+  <img src="/logoredondo.png" alt="Logo Dólar al Día" class="w-48 md:w-60" />
   
-  <div class="text-center">
+  <div class="flex-1">
     <h1 class="text-5xl font-bold py-2 text-white">Dólar al Día</h1>
     <p class="text-gray-300">
-      Aplicacion movil para mantenerse informado sobra la fluctuaciones del dolar en Venezuela
+      Aplicación móvil para mantenerse informado sobre las fluctuaciones del dólar en Venezuela
     </p>
 
-    <!-- Botón de descarga de la Play Store como imagen completa -->
-    <a href="https://play.google.com/store/apps/details?id=com.carlosv.menulateral&hl=es_419" target="_blank" class="my-6 flex justify-center md:justify-start">
-      <img src="/descarga_google_play.png" alt="Descargar en Google Play" class="w-48 md:w-60">
-    </a>
+    <!-- 
+      CAMBIO: Se añadió "items-center" para alinear verticalmente los botones entre sí 
+    -->
+    <div class="flex flex-col md:flex-row gap-4 my-6 justify-center md:justify-start items-center">
+      <!-- Botón de descarga de la Play Store -->
+      <a href="https://play.google.com/store/apps/details?id=com.carlosv.menulateral&hl=es_419" target="_blank">
+        <img src="/descarga_google_play.png" alt="Descargar en Google Play" class="w-48">
+      </a>
+
+      <!-- Botón de descarga de la App Store -->
+      <a href="https://apps.apple.com/ve/app/dolar-al-dia-venezuela/id6743636151" target="_blank">
+        <img src="/appstore.png" alt="Descargar en App Store" class="w-48">
+      </a>
+    </div>
 
     <!-- <Button client:load/>  -->
   </div>
