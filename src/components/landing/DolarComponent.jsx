@@ -98,12 +98,12 @@ const DolarComponent = () => {
       
       {isFutureUpdateAvailable && (
         <div className="rate-toggle-container">
-          <span>Tasa de Hoy</span>
+          <span>Tasa Actual</span>
           <label className="switch">
             <input type="checkbox" checked={showFutureRates} onChange={handleToggle} />
             <span className="slider round"></span>
           </label>
-          <span>Tasa de Mañana</span>
+          <span>Próxima Actualización</span>
         </div>
       )}
 
