@@ -3,3 +3,90 @@ body{
     background: #202020;
     color: whitesmoke;
 }
+
+/* Pega esto al final de src/styles/layout.css */
+
+/* --- Estilos para el interruptor de tasas (Hoy/Mañana) --- */
+
+.rate-toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4b5563;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* --- Estilos para la animación de VOLTEO 3D de las tarjetas --- */
+
+/* 1. Contenedor principal que establece la perspectiva 3D */
+.rate-cards-container {
+  /* ¡Importante! Esto crea el "escenario" 3D */
+  perspective: 1000px; 
+}
+
+/* 2. Estilos para cada tarjeta individual dentro del contenedor */
+.rate-cards-container > div {
+  /* Transición suave para la propiedad 'transform' */
+  transition: transform 0.6s; 
+  /* Mantiene los elementos en un espacio 3D */
+  transform-style: preserve-3d;
+}
+
+/* 3. Cuando el contenedor está en estado 'flipping', se aplica la rotación */
+.rate-cards-container.flipping > div {
+  /* Gira cada tarjeta 180 grados sobre su eje Y (horizontalmente) */
+  transform: rotateY(180deg);
+}

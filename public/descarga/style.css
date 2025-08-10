@@ -83,14 +83,47 @@ h1 {
     margin: -13px 0; /* Ajuste vertical para que se vea centrado */
 }
 
+/* --- ESTILOS PARA ALINEAR Y UNIFICAR TAMAÑO DE BOTONES DE DESCARGA --- */
+
+/* Contenedor de los botones */
+.download-buttons {
+    display: flex; /* Activa Flexbox para alinear elementos */
+    justify-content: center; /* Centra los botones horizontalmente */
+    align-items: center; /* Centra los botones verticalmente */
+    gap: 20px; /* Añade un espacio de 20px entre los botones */
+    flex-wrap: wrap; /* Permite que los botones se apilen en pantallas pequeñas */
+    margin-top: 25px; /* Añade un poco de espacio arriba */
+}
+
+/* Insignias de las tiendas (las imágenes) */
+.store-badge {
+    height: 55px; /* ¡ESTA ES LA LÍNEA CLAVE! Fija la altura para ambas imágenes */
+    width: auto; /* El ancho se ajusta automáticamente para mantener la proporción */
+}
+
 
 /* --- Pie de Página --- */
+/* --- ESTILOS PARA EL FOOTER Y EL ICONO DE INICIO --- */
+
 footer {
-    position: absolute;
-    bottom: 20px;
-    font-size: 0.8rem;
-    color: #555;
+    display: flex; /* Activa Flexbox */
+    justify-content: space-between; /* Empuja los elementos a los extremos */
+    align-items: center; /* Los alinea verticalmente */
+    width: 100%;
+    margin-top: 40px; /* Un poco más de espacio arriba */
 }
+
+.home-icon-link svg {
+    width: 24px;  /* Tamaño del icono */
+    height: 24px;
+    fill: #9CA3AF; /* Color gris muy sutil */
+    transition: fill 0.2s ease-in-out; /* Transición suave para el hover */
+}
+
+.home-icon-link:hover svg {
+    fill: #6B7280; /* Un gris un poco más oscuro al pasar el ratón */
+}
+
 
 
 /* --- Diseño Responsivo para Pantallas más Grandes (Tablets y Escritorio) --- */
