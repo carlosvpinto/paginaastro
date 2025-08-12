@@ -1,0 +1,32 @@
+---
+// src/pages/dashboard.astro
+
+import Layout from '../layouts/Layout.astro';
+import DashboardComponent from '../components/landing/Dashboard.jsx';
+---
+<Layout title="Mi Dashboard - Dolar Al Dia">
+
+  <main>
+    <DashboardComponent client:only="react" />
+  </main>
+
+  <!-- 
+    --- CORRECCIÓN AQUÍ ---
+    Añadimos 'is:inline' al script.
+    Esto le dice a Astro que no intente procesar este código en el servidor,
+    sino que lo pase directamente al navegador.
+  -->
+  <script is:inline>
+    // Importamos el store dentro del script del navegador.
+    // Esto asume que tienes una forma de importar 'isLoggedIn' en el cliente,
+    // por ejemplo, si tu bundler (Vite) lo maneja o si lo expones globalmente.
+    // Si la importación directa no funciona aquí, hay un plan B.
+    import { isLoggedIn } from '../../stores/authStore';
+    
+    const isAuthenticated = isLoggedIn.get();
+    
+    if (!isAuthenticated) {
+      window.location.href = '/'; 
+    }
+  </script>
+</Layout>
