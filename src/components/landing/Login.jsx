@@ -1,58 +1,72 @@
-// src/components/Login.jsx
+// src/components/landing/Login.jsx
 import React, { useState } from 'react';
-import { useStore } from '@nanostores/react';
-import { isLoggedIn, attemptLogin } from '../../../stores/authStore';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../firebaseConfig'; // Ruta corregida
+import { isLoggedIn } from '../../stores/authStore';   // Ruta corregida
 
 export default function Login() {
-  const $isLoggedIn = useStore(isLoggedIn);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    const success = attemptLogin(username, password);
-    if (!success) {
-      setError('Usuario o contraseña incorrectos.');
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Evita que la página se recargue
+    setError('');
+    setLoading(true);
+
+    try {
+      // Usamos la función de Firebase para iniciar sesión
+      await signInWithEmailAndPassword(auth, email, password);
+      
+      // Si el login es exitoso:
+      // 1. Actualizamos nuestro store global
+      isLoggedIn.set(true);
+      
+      // 2. Redirigimos al usuario al dashboard
+      window.location.href = '/dashboard';
+
+    } catch (err) {
+      // Si hay un error, lo mostramos
+      setError('Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.');
+      console.error("Error de autenticación:", err);
+    } finally {
+      setLoading(false);
     }
   };
-  
-  // Si el store dice que el usuario ya está logueado, lo redirigimos
-  if ($isLoggedIn && typeof window !== 'undefined') {
-    window.location.href = '/dashboard';
-    return null; // No renderizamos nada mientras redirige
-  }
 
-  // El JSX del formulario es idéntico al ejemplo anterior
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#1a202c' }}>
-      <form onSubmit={handleLogin} style={{ padding: '40px', background: '#2d3748', borderRadius: '8px', color: 'white', width: '320px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '25px', fontSize: '1.5rem' }}>Acceso al Dashboard</h2>
-        <div>
-          <label htmlFor="username" style={{ display: 'block', marginBottom: '5px' }}>Usuario</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: 'none', color: 'black' }}
-          />
-        </div>
-        <div style={{ marginTop: '15px' }}>
-          <label htmlFor="password" style={{ display: 'block', marginBottom: '5px' }}>Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: '100%', padding: '10px', borderRadius: '4px', border: 'none', color: 'black' }}
-          />
-        </div>
-        {error && <p style={{ color: '#e53e3e', marginTop: '15px', textAlign: 'center' }}>{error}</p>}
-        <button type="submit" style={{ width: '100%', padding: '12px', marginTop: '25px', background: '#3182ce', border: 'none', color: 'white', cursor: 'pointer', borderRadius: '4px', fontSize: '1rem' }}>
-          Entrar
+    <div style={containerStyle}>
+      <h2 style={{ color: 'white', textAlign: 'center' }}>Acceso de Administrador</h2>
+      <form onSubmit={handleLogin} style={formStyle}>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Correo electrónico"
+          required
+          style={inputStyle}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Contraseña"
+          required
+          style={inputStyle}
+        />
+        {error && <p style={errorStyle}>{error}</p>}
+        <button type="submit" disabled={loading} style={buttonStyle}>
+          {loading ? 'Ingresando...' : 'Ingresar'}
         </button>
       </form>
     </div>
   );
 }
+
+// --- ESTILOS (puedes moverlos a un archivo CSS si prefieres) ---
+const containerStyle = { background: '#2d3748', padding: '40px', borderRadius: '8px', maxWidth: '400px', margin: '50px auto' };
+const formStyle = { display: 'flex', flexDirection: 'column', gap: '15px' };
+const inputStyle = { padding: '12px', borderRadius: '4px', border: 'none', fontSize: '1em' };
+const buttonStyle = { padding: '12px', borderRadius: '4px', border: 'none', background: '#3182ce', color: '#12552', fontWeight: 'bold', cursor: 'pointer' };
+const errorStyle = { color: '#e53e3e', background: '#4a5568', padding: '10px', borderRadius: '4px', textAlign: 'center' };

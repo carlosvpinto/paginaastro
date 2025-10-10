@@ -10,7 +10,7 @@ const DolarRates = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://pydolarve.org/api/v1/dollar?page=criptodolar', {
+        const response = await fetch('https://api.dolaraldiavzla.com/api/v1/dollar?page=criptodolar', {
           method: 'GET',
           headers: {
             'Authorization': 'Bearer 2x9Qjpxl5F8CoKK6T395KA',

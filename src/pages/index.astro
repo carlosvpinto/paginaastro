@@ -1,44 +1,36 @@
 ---
-import Layout from "../layouts/Layout.astro";
+// --- Imports para la página de inicio ---
 
+// 1. Componentes de Layout y de Astro (.astro) que SÍ se usan
+import Layout from "../layouts/Layout.astro";
 import Hero from "../components/landing/Hero.astro";
 import About from "../components/landing/About.astro";
-import DolarBcvyParalelo from "../components/landing/DolarBcvyParalelo.astro";
-import Footer from "../components/landing/PiedePagina.astro";
 import Usuarios from "../components/landing/Usuarios.astro";
-import Paginas from "../components/landing/OtrasPaginas.astro";
-import Bancos from "../components/landing/BancosdeVenezuela.astro";
-import MenuItemsView from "../components/MenuItemsView.astro";
-import Header from "../components/landing/Header.astro";
-// Importa el componente React
-import DolarDashboard from '../components/landing/Dashboard.jsx'; // Asegúrate de que la extensión sea .jsx si es un archivo React
-import DolarComponent from '../components/landing/DolarComponent';
-import OtrasPaginas from '../components/landing/otrasPaginas';
-import BancosdeVenezuela from '../components/landing/bancosdeVenezuelaReact';
-// src/pages/index.astro
-import Login from '../components/landing/Login';
+import Footer from "../components/landing/PiedePagina.astro";
 
-// src/pages/index.astro 
-//import firebase from '../firebaseConfig.js'; 
-//firebase.analytics();
+// 2. Componentes de React (.jsx) que se van a renderizar
+import DolarComponent from '../components/landing/DolarComponent.jsx';
+import OtrasPaginas from '../components/landing/otrasPaginas.jsx'; // Asumo que es .jsx
+import BancosdeVenezuela from '../components/landing/bancosdeVenezuelaReact.jsx'; // Asumo que es .jsx
+import Login from '../components/landing/Login.jsx';
 ---
 
-<Layout title="Principal">
-  
+<Layout title="Dolar Al Dia Venezuela - Tasa de Cambio Actualizada">
+
   <Hero />
-  <!-- Llamada al componente React dentro de la página de Astro -->
-<DolarComponent client:load />
+  
+  <!-- Muestra tu componente principal de tasas de dólar -->
+  <DolarComponent client:load />
 
-<!-- <Login client:load />  -->
- <!-- <DolarBcvyParalelo /> -->
- <OtrasPaginas client:visible/>
- <!--  <Paginas /> -->
-
- <BancosdeVenezuela client:visible/>
-
- 
-  <!-- <Bancos /> -->
+  
+  
+  <!-- Muestra el resto de tus componentes interactivos -->
+  <!-- <OtrasPaginas client:visible /> -->
+  <BancosdeVenezuela client:visible />
+  
+  <!-- Componentes estáticos de Astro -->
   <Usuarios />
   <About />
   <Footer />
+  
 </Layout>
