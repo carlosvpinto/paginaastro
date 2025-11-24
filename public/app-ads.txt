@@ -1,3 +1,4 @@
 # app-ads.txt for com.carlosv.dolaraldia
 google.com, pub-3265312813580307, DIRECT, f08c47fec0942fa0
 google.com, pub-5303101028880067, DIRECT, f08c47fec0942fa0
+facebook.com, 1032730565651686, DIRECT, c3e20eee3f780d6a
