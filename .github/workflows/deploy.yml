@@ -28,7 +28,7 @@ jobs:
           corepack prepare pnpm@latest --activate
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile --allow-build
 
       - name: Build Astro site
         run: pnpm run build
