@@ -28,7 +28,7 @@ jobs:
           corepack prepare pnpm@latest --activate
 
       - name: Install dependencies
-        run: pnpm config set only-built-dependencies esbuild,protobufjs,sharp && pnpm install --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile --ignore-scripts
 
       - name: Build Astro site
         run: pnpm run build
