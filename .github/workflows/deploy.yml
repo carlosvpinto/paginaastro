@@ -20,20 +20,27 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: latest
 
-      - name: Install dependencies and Build
-        run: |
-          pnpm install
-          pnpm run build
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build site
+        run: pnpm run build
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist # Astro genera la web compilada aquí
 
   deploy:
     needs: build
